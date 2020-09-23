@@ -65,7 +65,9 @@ public class OfflineSpeechRecognizer {
         log(messsage: "Locale set to: \(locale)" )
         log(messsage: "SpeechRecognizer Locale: \(speechRecognizer.locale)")
 
-        // This is a Hack. But calling supportsOnDeviceRecognition has an unknown side effect and will make the code work.
+        #warning("This is a Hack.")
+        // Calling supportsOnDeviceRecognition here, has an unknown side effect and will make the same check on line 77 return true, (if the device supports on device recognition). Without this call, supportsOnDeviceRecognition on line 77 will return false. (Eventhough the device can support on device recognition).
+
         if speechRecognizer.supportsOnDeviceRecognition {}
 
         // Important! Keep data on Device. RequiresOnDeviceRecognition should be set to true otherwise the recognition data will be sent to Apple's servers.
