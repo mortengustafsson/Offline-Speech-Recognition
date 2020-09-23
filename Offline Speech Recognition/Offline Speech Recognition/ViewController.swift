@@ -51,6 +51,9 @@ class ViewController: UIViewController {
         consoleView.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5)
         consoleView.textColor = UIColor.ConsoleViewTextColor()
 
+        label.numberOfLines = 0
+        label.textAlignment = .center
+
         view.addSubview(label)
         view.addSubview(recordButton)
         view.addSubview(consoleView)
@@ -76,12 +79,16 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             recordButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             recordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
             consoleView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             consoleView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             consoleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             consoleView.heightAnchor.constraint(equalToConstant: 200),
+
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.topAnchor.constraint(equalTo: consoleView.bottomAnchor, constant: 20),
+            label.widthAnchor.constraint(lessThanOrEqualTo: consoleView.widthAnchor, constant: -30),
+
             contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             contentView.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 10),
             contentView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -10),
